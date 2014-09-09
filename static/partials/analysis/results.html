@@ -1,0 +1,19 @@
+<div class="row col-sm-5 col-sm-offset-3">
+
+<p><b>Text:</b> {{results.text}}</p>
+
+<table class="table">
+  <tr>
+  	<th class="text-right" width="5%">Position</th>
+  	<th width="85%">Term</th>
+  	<th class="text-right" width="5%">Start</th>
+  	<th class="text-right" width="5%">End</th>
+  </tr>
+  <tr ng-repeat="token in results.token_stream">
+  	<td class="text-right">{{token.position}}</td>
+  	<td>{{token.termDecoded}}</td>
+  	<td class="text-right">{{token.start}}</td>
+  	<td class="text-right">{{token.end}}</td>
+  </tr>
+</table>
+</div>

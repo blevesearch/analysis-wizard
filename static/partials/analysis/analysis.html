@@ -1,0 +1,37 @@
+<div class="jumbotron">
+
+<div class="row">
+<img class="logo" src="/static/img/bleve.png"/><h2 class="header">Bleve Text Analysis Wizard</h2>
+</div>
+
+<div class="row col-sm-10 col-sm-offset-1">
+  <p/>
+  <p>To get high quality search results, you must choose the right analyzer for your source text.  To better understand how your text will be analyzed, try it out using the form below.</p>
+  <p/>
+</div>
+<div class="row">
+  <form class="form-horizontal" role="form">
+    <div class="form-group">
+      <label class="control-label col-sm-2" for="inputSuccess3">Analyzer</label>
+      <div class="col-sm-3">
+        <select ng-model="selectedAnalyzer" ng-change="analyzerChanged()" id="analyzerInput" class="form-control">
+          <option ng-repeat="analyzer in analyzers">{{analyzer}}</option>
+        </select>
+      </div>
+  <div class="col-lg-6">
+    <div class="input-group">
+      <input ng-model="txt" type="text" placeholder="text to analyze" class="form-control">
+      <span class="input-group-btn">
+        <button ng-click="analyzeText()" class="btn btn-primary" type="submit"><span class="glyphicon glyphicon-play"></span> Analyze</button>
+      </span>
+    </div><!-- /input-group -->
+  </div>
+    </div>
+  </div>
+</form>
+<button ng-show="hasCustomMappings" class="btn btn-default pull-right btn-xs" ng-click="exportSource('lg')">Export Custom Mapping</button>
+</div>
+
+<div ng-show="results" ng-include src="'/static/partials/analysis/results.html'"/>
+
+<div ng-show="building" ng-include src="'/static/partials/analysis/building.html'"/>

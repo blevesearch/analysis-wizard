@@ -1,0 +1,5 @@
+			<select ng-change="tokenFilterWordMapChanged()" ng-model="tokenfilter.word_map" class="form-control" id="tokenfilterTokenMaps">
+	    		<option ng-repeat="tokenMap in tokenMaps">{{tokenMap}}</option>
+	    	</select>
+	    	<label ng-show="tokenfilter.showCustomWords" for="tokenfilterCustomTokenMaps">Custom Word List</label>
+		<textarea ng-show="tokenfilter.showCustomWords" ng-model="tokenfilter.custom_words" class="form-control" rows="3"></textarea>

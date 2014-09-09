@@ -1,0 +1,37 @@
+.highlight {
+	background: yellow;
+	padding:2px 2px;
+}
+
+.logo {
+	margin-top: 0px;
+	vertical-align: middle;
+  float: left;
+  padding-right: 20px;
+}
+
+.debug {
+	font-family: fixed;
+}
+
+.overide-brand {
+  float: left;
+  height: 50px;
+  padding: 15px 15px;
+  font-size: 18px;
+  line-height: 20px;
+}
+.overide-brand:hover,
+.overide-brand:focus {
+  text-decoration: none;
+}
+@media (min-width: 768px) {
+  .navbar > .container .overide-brand,
+  .navbar > .container-fluid .overide-brand {
+    margin-left: -15px;
+  }
+}
+
+.navbar-inverse .overide-brand {
+	color: white;
+}

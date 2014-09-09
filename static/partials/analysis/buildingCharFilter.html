@@ -1,0 +1,25 @@
+<h3>Build Custom Character Filter</h3>
+
+<div ng-show="charfilter.errorMessage" class="alert alert-danger ng-cloak" role="alert"> {{charfilter.errorMessage}}
+</div>
+
+<form class="form" role="form">
+	<div class="form-group">
+		<label for="charfilterName">Name</label>
+			<input ng-model="charfilter.name" type="text" class="form-control" id="charfilterName" placeholder="Analyzer Name">
+	</div>
+
+	<div class="form-group">
+			<label for="charfiltertype">Type</label>
+			<div class="col-sm-12 input-group">
+			<select ng-change="charFilterTypeChange()" ng-model="charfilter.type" class="form-control" id="charfiltertype">
+	    		<option ng-repeat="charFilterTyp in charFilterTypes">{{charFilterTyp}}</option>
+	    	</select>
+		</div>
+	</div>
+
+	<div ng-show="charfilter.type" ng-include src="charfilter.formpath"/>
+
+	<button ng-click="buildCharFilter()" type="button" class="btn btn-default pull-right">Build</button>
+
+</form>
