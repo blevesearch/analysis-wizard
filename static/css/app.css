@@ -35,3 +35,8 @@
 .navbar-inverse .overide-brand {
 	color: white;
 }
+
+.corner {
+  padding-top: 5px;
+  padding-right: 5px;
+}
