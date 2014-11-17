@@ -575,8 +575,8 @@ function AnalysisCtrl($scope, $http, $routeParams, $log, $sce, $modal) {
         result = "func buildIndexMapping() (*bleve.IndexMapping, error) {\n";
         result += "\tindexMapping := bleve.NewIndexMapping()";
         result += "\n\n";
+        result += "\tvar err error\n";
         for(var charFilterName in $scope.customCharFilters) {
-            result += "\tvar err error\n";
             result += "\terr = indexMapping.AddCustomCharFilter(";
             result += '"' + charFilterName + '"';
             result += ",\n\t\t";
@@ -640,7 +640,7 @@ function AnalysisCtrl($scope, $http, $routeParams, $log, $sce, $modal) {
                 return result + "false";
             }
         } else if (typeof obj === 'string') {
-            return result+'"' + obj + '"';
+            return result+'`' + obj + '`';
         } else if (typeof obj === 'number') {
             return result+obj.toString();
         } else if (typeof obj === 'object') {
