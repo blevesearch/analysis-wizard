@@ -336,6 +336,8 @@ function AnalysisCtrl($scope, $http, $routeParams, $log, $sce, $modal) {
             $scope.tokenfilter.formpath = "/static/partials/analysis/tokenfilter-stop-tokens.html";
         } else if ($scope.tokenfilter.type === "shingle") {
             $scope.tokenfilter.formpath = "/static/partials/analysis/tokenfilter-shingle.html";
+        } else if ($scope.tokenfilter.type === "dict_compound") {
+            $scope.tokenfilter.formpath = "/static/partials/analysis/tokenfilter-compound.html";
         } else {
             $scope.tokenfilter.formpath = "/static/partials/analysis/tokenfilter-generic.html";
         }
@@ -524,6 +526,8 @@ function AnalysisCtrl($scope, $http, $routeParams, $log, $sce, $modal) {
                 candidateTokenFilter.keywords_token_map = wordMapName;
             } else if (candidateTokenFilter.type === "stop_tokens") {
                 candidateTokenFilter.stop_token_map = wordMapName;
+            } else if (candidateTokenFilter.type === "dict_compound") {
+                candidateTokenFilter.dict_token_map = wordMapName;
             }
         } else {
             if (candidateTokenFilter.type === "elision") {
