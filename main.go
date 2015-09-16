@@ -13,6 +13,8 @@ import (
 	"flag"
 	"log"
 	"net/http"
+
+	_ "github.com/blevesearch/bleve/config"
 )
 
 var bindAddr = flag.String("addr", ":8096", "http listen address")
