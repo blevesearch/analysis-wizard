@@ -7,25 +7,26 @@
 //  either express or implied. See the License for the specific language governing permissions
 //  and limitations under the License.
 
-// +build !appengine
+// +build appengine
 
 package main
 
 import (
 	"flag"
-	"log"
 	"net/http"
 
-	_ "github.com/blevesearch/bleve/config"
+	"github.com/blevesearch/bleve"
+	"github.com/blevesearch/bleve/index/store/gtreap"
 )
 
-var bindAddr = flag.String("addr", ":8096", "http listen address")
 var staticEtag = flag.String("staticEtag", "", "A static etag value.")
 var staticPath = flag.String("static", "static/", "Path to the static content")
 
-func main() {
+func init() {
 
 	flag.Parse()
+
+	bleve.Config.DefaultKVStore = gtreap.Name
 
 	// create a router to serve static files
 	router := staticFileRouter()
@@ -45,7 +46,4 @@ func main() {
 
 	// start the HTTP server
 	http.Handle("/", router)
-	log.Printf("Listening on %v", *bindAddr)
-	log.Fatal(http.ListenAndServe(*bindAddr, nil))
-
 }
