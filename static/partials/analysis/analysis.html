@@ -20,7 +20,7 @@
       </div>
   <div class="col-lg-6">
     <div class="input-group">
-      <input ng-model="txt" type="text" placeholder="text to analyze" class="form-control">
+      <input ng-model="txt" ng-trim="false" type="text" placeholder="text to analyze" class="form-control">
       <span class="input-group-btn">
         <button ng-click="analyzeText()" class="btn btn-primary" type="submit"><span class="glyphicon glyphicon-play"></span> Analyze</button>
       </span>
