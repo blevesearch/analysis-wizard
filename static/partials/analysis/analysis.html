@@ -18,17 +18,17 @@
           <option ng-repeat="analyzer in analyzers">{{analyzer}}</option>
         </select>
       </div>
-  <div class="col-lg-6">
-    <div class="input-group">
-      <input ng-model="txt" ng-trim="false" type="text" placeholder="text to analyze" class="form-control">
-      <span class="input-group-btn">
-        <button ng-click="analyzeText()" class="btn btn-primary" type="submit"><span class="glyphicon glyphicon-play"></span> Analyze</button>
-      </span>
-    </div><!-- /input-group -->
-  </div>
+      <div class="col-sm-7">
+        <div class="input-group">
+          <input ng-model="txt" ng-trim="false" type="text" placeholder="text to analyze" class="form-control">
+          <span class="input-group-btn">
+            <button ng-click="analyzeText()" class="btn btn-primary" type="submit"><span class="glyphicon glyphicon-play"></span> Analyze</button>
+          </span>
+        </div>
+      </div>
     </div>
-  </div>
-</form>
+  </form>
+</div>
 <button ng-show="hasCustomMappings" class="btn btn-default pull-right btn-xs" ng-click="exportSource('lg')">Export Custom Mapping</button>
 </div>
 
