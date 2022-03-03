@@ -16,10 +16,10 @@ import (
 	"net/http"
 	"sort"
 
-	"github.com/blevesearch/bleve"
-	"github.com/blevesearch/bleve/analysis"
-	"github.com/blevesearch/bleve/mapping"
-	"github.com/blevesearch/bleve/registry"
+	"github.com/blevesearch/bleve/v2"
+	"github.com/blevesearch/bleve/v2/analysis"
+	"github.com/blevesearch/bleve/v2/mapping"
+	"github.com/blevesearch/bleve/v2/registry"
 )
 
 func ListAnalyzerNames(w http.ResponseWriter, req *http.Request) {
