@@ -15,8 +15,8 @@ import (
 	"flag"
 	"net/http"
 
-	"github.com/blevesearch/bleve"
-	"github.com/blevesearch/bleve/index/store/gtreap"
+	"github.com/blevesearch/bleve/v2"
+	"github.com/blevesearch/bleve/v2/index/upsidedown/store/gtreap"
 )
 
 var staticEtag = flag.String("staticEtag", "", "A static etag value.")
