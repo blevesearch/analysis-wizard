@@ -1,72 +1,75 @@
 <div class="row">
-	<div class="col-lg-6">
+    <div class="col-lg-6">
 
-		<h3>Build Custom Analyzer</h3>
+        <h3>Build Custom Analyzer</h3>
 
-		<div ng-show="analyzer.errorMessage" class="alert alert-danger ng-cloak" role="alert"> {{analyzer.errorMessage}}
-		</div>
+        <div ng-show="analyzer.errorMessage" class="alert alert-danger ng-cloak" role="alert"> {{analyzer.errorMessage}}
+        </div>
 
-		<form class="form" role="form">
-		  <div class="form-group">
-		    <label for="analyzerName">Name</label>
-		    	<input ng-model="analyzer.name" type="text" class="form-control" id="analyzerName" placeholder="Analyzer Name">
-		  </div>
-		  <div class="form-group">
-		    <label for="exampleInputPassword1">Character Filters</label>
-		    	<ul class="list-group" ng-show="analyzer.charFilters.length < 1">
-		    		<li class="list-group-item">None</li>
-		    	</ul>
-				<ul class="list-group" ng-show="analyzer.charFilters.length > 0" ui-sortable ng-model="analyzer.charFilters">
-				  <li class="list-group-item" ng-repeat="analyzerCharFilter in analyzer.charFilters  track by $index"><span class="glyphicon glyphicon-minus"></span> {{ analyzerCharFilter }}<span ng-click="removeCharFilter($index)" class="glyphicon glyphicon-remove pull-right"></span></li>
-				</ul>
-		  </div>
-		  <div class="form-group">
-		  		<label for="exampleInputPassword2">Add Character Filter</label>
-		  		<div class="col-sm-12 input-group">
-		  			<div class="col-sm-10">
-		    		<select ng-change="addCharFilterChanged()" ng-model="analyzer.addCharacterFilters" class="form-control" id="addCharacterFilters">
-			    		<option ng-repeat="charFilter in charFilters">{{charFilter}}</option>
-			    	</select>
-			    	</div>
-			    	<div class="col-sm-2">
-		    		<button ng-click="addCharFilter()" type="button" class="btn btn-default pull-right">Add</button>
-		    		</div>
-		    	</div>
-		  </div>
-		  <div class="form-group">
-		    <label for="analyzerTokenizer">Tokenizer</label>
-			    <select ng-change="tokenizerChanged()" ng-model="analyzer.tokenizer" class="form-control" id="analyzerTokenizer">
-			    	<option ng-repeat="tokenizer in tokenizers">{{tokenizer}}</option>
-			    </select>
-		  </div>
-		  <div class="form-group">
-		    <label for="exampleInputPassword2">Token Filters</label>
-		    	<ul class="list-group" ng-show="analyzer.tokenFilters.length < 1">
-		    		<li class="list-group-item">None</li>
-		    	</ul>
-				<ul class="list-group" ng-show="analyzer.tokenFilters.length > 0" ui-sortable ng-model="analyzer.tokenFilters">
-				  <li class="list-group-item" ng-repeat="analyzerTokenFilter in analyzer.tokenFilters"><span class="glyphicon glyphicon-minus"></span>  {{ analyzerTokenFilter }}<span ng-click="removeTokenFilter($index)" class="glyphicon glyphicon-remove pull-right"></li>
-				</ul>
-		  </div>
-		  <div class="form-group">
-		  		<label for="exampleInputPassword2">Add Token Filter</label>
-		  		<div class="col-sm-12 input-group">
-		  			<div class="col-sm-10">
-		    		<select ng-change="addTokenFilterChanged()" ng-model="analyzer.addTokenFilters" class="form-control" id="addTokenFilters">
-			    		<option ng-repeat="tokenFilter in tokenFilters">{{tokenFilter}}</option>
-			    	</select>
-			    	</div>
-			    	<div class="col-sm-2">
-		    		<button ng-click="addTokenFilter()" type="button" class="btn btn-default pull-right">Add</button>
-		    		</div>
-		    	</div>
-		  </div>
-		  <button ng-click="buildAnalyzer()" type="button" class="btn btn-default pull-right">Build</button>
-		</form>
+        <form class="form" role="form">
+            <div class="form-group">
+                <label for="analyzerName">Name</label>
+                <input ng-model="analyzer.name" type="text" class="form-control" id="analyzerName" placeholder="Analyzer Name">
+            </div>
+            <div class="form-group">
+                <label for="exampleInputPassword1">Character Filters</label>
+                <ul class="list-group" ng-show="analyzer.charFilters.length < 1">
+                    <li class="list-group-item">None</li>
+                </ul>
+                <ul class="list-group" ng-show="analyzer.charFilters.length > 0" ui-sortable ng-model="analyzer.charFilters">
+                    <li class="list-group-item" ng-repeat="analyzerCharFilter in analyzer.charFilters  track by $index"><span class="glyphicon glyphicon-minus"></span> {{ analyzerCharFilter }}<span ng-click="removeCharFilter($index)" class="glyphicon glyphicon-remove pull-right"></span></li>
+                </ul>
+            </div>
+            <div class="form-group">
+                <label for="exampleInputPassword2">Add Character Filter</label>
+                <div class="col-sm-12 input-group">
+                    <div class="col-sm-10">
+                        <select ng-change="addCharFilterChanged()" ng-model="analyzer.addCharacterFilters" class="form-control" id="addCharacterFilters">
+                            <option ng-repeat="charFilter in charFilters">{{charFilter}}</option>
+                        </select>
+                    </div>
+                    <div class="col-sm-2">
+                        <button ng-click="addCharFilter()" type="button" class="btn btn-default pull-right">Add</button>
+                    </div>
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="analyzerTokenizer">Tokenizer</label>
+                <select ng-change="tokenizerChanged()" ng-model="analyzer.tokenizer" class="form-control" id="analyzerTokenizer">
+                    <option ng-repeat="tokenizer in tokenizers">{{tokenizer}}</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="exampleInputPassword2">Token Filters</label>
+                <ul class="list-group" ng-show="analyzer.tokenFilters.length < 1">
+                    <li class="list-group-item">None</li>
+                </ul>
+                <ul class="list-group" ng-show="analyzer.tokenFilters.length > 0" ui-sortable ng-model="analyzer.tokenFilters">
+                    <li class="list-group-item" ng-repeat="analyzerTokenFilter in analyzer.tokenFilters"><span class="glyphicon glyphicon-minus"></span>  {{ analyzerTokenFilter }}<span ng-click="removeTokenFilter($index)" class="glyphicon glyphicon-remove pull-right"></li>
+                </ul>
+            </div>
+            <div class="form-group">
+                <label for="exampleInputPassword2">Add Token Filter</label>
+                <div class="col-sm-12 input-group">
+                    <div class="col-sm-10">
+                        <select ng-change="addTokenFilterChanged()" ng-model="analyzer.addTokenFilters" class="form-control" id="addTokenFilters">
+                            <option ng-repeat="tokenFilter in tokenFilters">{{tokenFilter}}</option>
+                        </select>
+                    </div>
+                    <div class="col-sm-2">
+                        <button ng-click="addTokenFilter()" type="button" class="btn btn-default pull-right">Add</button>
+                    </div>
+                </div>
+            </div>
+            <button ng-click="buildAnalyzer()" type="button" class="btn btn-default pull-right">Build</button>
+        </form>
 
-	</div>
+    </div>
 
-	<div ng-show="buildingCharFilter" class="col-lg-6" ng-include src="'/static/partials/analysis/buildingCharFilter.html'"/>
-	<div ng-show="buildingTokenizer" class="col-lg-6" ng-include src="'/static/partials/analysis/buildingTokenizer.html'"/>
-	<div ng-show="buildingTokenFilter" class="col-lg-6" ng-include src="'/static/partials/analysis/buildingTokenFilter.html'"/>
+    <div ng-show="buildingCharFilter" class="col-lg-6" ng-include src="'/static/partials/analysis/buildingCharFilter.html'"/>
+        <div ng-show="buildingTokenizer" class="col-lg-6" ng-include src="'/static/partials/analysis/buildingTokenizer.html'"/>
+            <div ng-show="buildingTokenFilter" class="col-lg-6" ng-include src="'/static/partials/analysis/buildingTokenFilter.html'"/>
+            </div>
+        </div>
+    </div>
 </div>
