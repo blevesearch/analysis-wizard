@@ -4,7 +4,7 @@ The analysis wizard is a tool to help users and developers experiment with the t
 
 # Live
 
-[Try out the Bleve Text Analysis Wizard Live](http://bleveanalysis.couchbase.com/analysis)
+[Try out the Bleve Text Analysis Wizard Live](https://bleveanalysis.couchbase.com)
 
 # Watch the intro video
 
