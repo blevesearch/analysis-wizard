@@ -19,7 +19,7 @@ import (
 	_ "github.com/blevesearch/bleve/v2/config"
 )
 
-var bindAddr = flag.String("addr", ":8096", "http listen address")
+var bindAddr = flag.String("addr", ":8096", "https listen address")
 var staticEtag = flag.String("staticEtag", "", "A static etag value.")
 var staticPath = flag.String("static", "static/", "Path to the static content")
 
@@ -43,9 +43,8 @@ func main() {
 	router.HandleFunc("/api/_analyze", AnalyzerText).Methods("POST")
 	router.HandleFunc("/api/_validateMapping", ValidateMapping).Methods("POST")
 
-	// start the HTTP server
+	// start the HTTPs server
 	http.Handle("/", router)
 	log.Printf("Listening on %v", *bindAddr)
-	log.Fatal(http.ListenAndServe(*bindAddr, nil))
-
+	log.Fatal(http.ListenAndServeTLS(*bindAddr, "cert.pem", "key.pem", nil))
 }
