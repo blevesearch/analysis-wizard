@@ -19,7 +19,7 @@ import (
 	_ "github.com/blevesearch/bleve/v2/config"
 )
 
-var bindAddr = flag.String("addr", ":8096", "https listen address")
+var bindAddr = flag.String("addr", ":443", "https listen address")
 var staticEtag = flag.String("staticEtag", "", "A static etag value.")
 var staticPath = flag.String("static", "static/", "Path to the static content")
 
