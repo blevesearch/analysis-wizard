@@ -1,13 +1,12 @@
 function AnalysisCtrl($scope, $http, $routeParams, $log, $sce, $modal) {
-
     $scope.hasCustomMappings = false;
     $scope.building = false;
     $scope.buildingCharFilter = false;
     $scope.buildingTokenizer = false;
     $scope.buildingTokenFilter = false;
     $scope.txt = "";
-	$scope.selectedAnalyzer = "standard";
-	$scope.analyzers = [];
+    $scope.selectedAnalyzer = "standard";
+    $scope.analyzers = [];
     $scope.charFilters = [];
     $scope.charFilterTypes = [];
     $scope.tokenizers = [];
@@ -15,7 +14,7 @@ function AnalysisCtrl($scope, $http, $routeParams, $log, $sce, $modal) {
     $scope.tokenFilters = [];
     $scope.tokenFilterTypes = [];
     $scope.tokenMaps = [];
-	$scope.errorMessage = null;
+    $scope.errorMessage = null;
 
     // custom built
     $scope.customAnalyzers = {};
@@ -67,7 +66,7 @@ function AnalysisCtrl($scope, $http, $routeParams, $log, $sce, $modal) {
         $scope.tokenfilter.output_original = false;
     };
     resetNewTokenFilter();
-	
+
     updateAnalyzers = function() {
         mapping = {
             "analysis": {
@@ -82,9 +81,9 @@ function AnalysisCtrl($scope, $http, $routeParams, $log, $sce, $modal) {
             $scope.analyzers = data.analyzers;
             $scope.analyzers.push("Build your own...");
         }).
-        error(function(data, code) {
-			$scope.errorMessage = data;
-        });
+            error(function(data, code) {
+                $scope.errorMessage = data;
+            });
     };
 
     updateCharFilters = function() {
@@ -101,18 +100,18 @@ function AnalysisCtrl($scope, $http, $routeParams, $log, $sce, $modal) {
             $scope.charFilters = data.char_filters;
             $scope.charFilters.push("Build your own...");
         }).
-        error(function(data, code) {
-            $scope.errorMessage = data;
-        });
+            error(function(data, code) {
+                $scope.errorMessage = data;
+            });
     };
 
     updateCharFilterTypes = function() {
         $http.get('/api/_charFilterTypes').success(function(data) {
             $scope.charFilterTypes = data.char_filter_types;
         }).
-        error(function(data, code) {
-            $scope.errorMessage = data;
-        });
+            error(function(data, code) {
+                $scope.errorMessage = data;
+            });
     };
 
     updateTokenizers = function() {
@@ -129,18 +128,18 @@ function AnalysisCtrl($scope, $http, $routeParams, $log, $sce, $modal) {
             $scope.tokenizers = data.tokenizers;
             $scope.tokenizers.push("Build your own...");
         }).
-        error(function(data, code) {
-            $scope.errorMessage = data;
-        });
+            error(function(data, code) {
+                $scope.errorMessage = data;
+            });
     };
 
     updateTokenizerTypes = function() {
         $http.get('/api/_tokenizerTypes').success(function(data) {
             $scope.tokenizerTypes = data.tokenizer_types;
         }).
-        error(function(data, code) {
-            $scope.errorMessage = data;
-        });
+            error(function(data, code) {
+                $scope.errorMessage = data;
+            });
     };
 
     updateTokenFilters = function() {
@@ -157,18 +156,18 @@ function AnalysisCtrl($scope, $http, $routeParams, $log, $sce, $modal) {
             $scope.tokenFilters = data.token_filters;
             $scope.tokenFilters.push("Build your own...");
         }).
-        error(function(data, code) {
-            $scope.errorMessage = data;
-        });
+            error(function(data, code) {
+                $scope.errorMessage = data;
+            });
     };
 
     updateTokenFilterTypes = function() {
         $http.get('/api/_tokenFilterTypes').success(function(data) {
             $scope.tokenFilterTypes = data.token_filter_types;
         }).
-        error(function(data, code) {
-            $scope.errorMessage = data;
-        });
+            error(function(data, code) {
+                $scope.errorMessage = data;
+            });
     };
 
     updateTokenMaps = function() {
@@ -185,9 +184,9 @@ function AnalysisCtrl($scope, $http, $routeParams, $log, $sce, $modal) {
             $scope.tokenMaps = data.token_maps;
             $scope.tokenMaps.push("Custom Word List...");
         }).
-        error(function(data, code) {
-            $scope.errorMessage = data;
-        });
+            error(function(data, code) {
+                $scope.errorMessage = data;
+            });
     };
 
     updateAnalyzers();
@@ -211,24 +210,24 @@ function AnalysisCtrl($scope, $http, $routeParams, $log, $sce, $modal) {
                 "token_maps": $scope.customTokenMaps
             }
         };
-		analyzeRequest = {
-			"analyzer": $scope.selectedAnalyzer,
-			"text": $scope.txt,
+        analyzeRequest = {
+            "analyzer": $scope.selectedAnalyzer,
+            "text": $scope.txt,
             "mapping": mapping
-		};
+        };
         $http.post('/api/_analyze',analyzeRequest).success(function(data) {
             $scope.processResults(data);
         }).
-        error(function(data, code) {
-			$scope.errorMessage = data;
-        });
+            error(function(data, code) {
+                $scope.errorMessage = data;
+            });
     };
 
     $scope.processResults = function(data) {
-		$scope.errorMessage = null;
+        $scope.errorMessage = null;
         $scope.results = data;
         for(var i in $scope.results.token_stream) {
-			$scope.results.token_stream[i].termDecoded = UTF8ArrToStr(base64DecToArr($scope.results.token_stream[i].term));
+            $scope.results.token_stream[i].termDecoded = UTF8ArrToStr(base64DecToArr($scope.results.token_stream[i].term));
         }
     };
 
@@ -436,9 +435,9 @@ function AnalysisCtrl($scope, $http, $routeParams, $log, $sce, $modal) {
             $scope.selectedAnalyzer = $scope.analyzer.name;
             resetNewAnalyzer();
         }).
-        error(function(data, code) {
-            $scope.analyzer.errorMessage = data;
-        });
+            error(function(data, code) {
+                $scope.analyzer.errorMessage = data;
+            });
     };
 
     $scope.buildCharFilter = function() {
@@ -462,9 +461,9 @@ function AnalysisCtrl($scope, $http, $routeParams, $log, $sce, $modal) {
             $scope.analyzer.addCharacterFilters = $scope.charfilter.name;
             resetNewCharFilter();
         }).
-        error(function(data, code) {
-            $scope.charfilter.errorMessage = data;
-        });
+            error(function(data, code) {
+                $scope.charfilter.errorMessage = data;
+            });
     };
 
     $scope.buildTokenizer = function() {
@@ -488,9 +487,9 @@ function AnalysisCtrl($scope, $http, $routeParams, $log, $sce, $modal) {
             $scope.analyzer.tokenizer = $scope.tokenizer.name;
             resetNewTokenizer();
         }).
-        error(function(data, code) {
-            $scope.tokenizer.errorMessage = data;
-        });
+            error(function(data, code) {
+                $scope.tokenizer.errorMessage = data;
+            });
     };
 
     $scope.buildTokenFilter = function() {
@@ -570,9 +569,9 @@ function AnalysisCtrl($scope, $http, $routeParams, $log, $sce, $modal) {
             $scope.analyzer.addTokenFilters = $scope.tokenfilter.name;
             resetNewTokenFilter();
         }).
-        error(function(data, code) {
-            $scope.tokenfilter.errorMessage = data;
-        });
+            error(function(data, code) {
+                $scope.tokenfilter.errorMessage = data;
+            });
     };
 
     buildGoMapping = function() {
@@ -695,7 +694,7 @@ function AnalysisCtrl($scope, $http, $routeParams, $log, $sce, $modal) {
                         result += "\t";
                     }
                 }
-                
+
                 result += "}";
             }
             return result;
@@ -714,30 +713,30 @@ function AnalysisCtrl($scope, $http, $routeParams, $log, $sce, $modal) {
                 "token_maps": $scope.customTokenMaps
             }
         };
-        
+
         $scope.mappingFormatted = JSON.stringify(mapping, undefined, 2);
         $scope.mappingGo = buildGoMapping();
         var modalInstance = $modal.open({
-          templateUrl: '/static/partials/analysis/export.html',
-          controller: ModalInstanceCtrl,
-          size: size,
-          resolve: {
-            mappingFormatted: function () {
-              return $scope.mappingFormatted;
-            },
-            mappingGo: function () {
-                return $scope.mappingGo;
+            templateUrl: '/static/partials/analysis/export.html',
+            controller: ModalInstanceCtrl,
+            size: size,
+            resolve: {
+                mappingFormatted: function () {
+                    return $scope.mappingFormatted;
+                },
+                mappingGo: function () {
+                    return $scope.mappingGo;
+                }
             }
-          }
         });
 
     };
 }
 
 var ModalInstanceCtrl = function ($scope, $modalInstance, mappingFormatted, mappingGo) {
-  $scope.mappingFormatted = mappingFormatted;
-  $scope.mappingGo = mappingGo;
-  $scope.cancel = function () {
-    $modalInstance.dismiss('cancel');
-  };
+    $scope.mappingFormatted = mappingFormatted;
+    $scope.mappingGo = mappingGo;
+    $scope.cancel = function () {
+        $modalInstance.dismiss('cancel');
+    };
 };
